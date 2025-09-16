@@ -1,0 +1,49 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'AttilaSansBasic-Semibold';
+  src: url('AttilaSansBasic-Semibold.ttf') format('ttf');
+  font-style: semibold;
+}
+
+@font-face {
+  font-family: 'AttilaSansBasic-Regular';
+  src: url('../public/fonts/AttilaSansBasic-Regular.ttf') format('ttf');
+  font-style: regular;
+}
+@font-face {
+  font-family: 'AttilaSansBasic-Medium';
+  src: url('AttilaSansBasic-Medium.ttf') format('ttf');
+  font-style: medium;
+}
+
+body {
+  font-family: 'AttilaSansBasic-Regular', sans-serif;
+  display: flex;
+  align-items: center;      /* vertical centering */
+  justify-content: center;
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+}
+
+.bold{
+  font-family: 'AttilaSansBasic-Semibold', sans-serif;
+}
+ 
+a {
+  text-decoration: inherit;
+}
+p{margin: 0;}
+h4{margin: 0;}
