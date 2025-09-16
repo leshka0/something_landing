@@ -139,7 +139,7 @@ function App() {
     if (!isDragging) return;
     
     const deltaX = e.clientX - startX;
-    const rotationDelta = deltaX * 0.2; // Sensitivity factor
+    const rotationDelta = deltaX * 0.22; // Sensitivity factor
     setRotation(startRotation - rotationDelta); // Negative for natural feel
   };
 
@@ -191,6 +191,9 @@ function App() {
     };
   }, [isDragging, startX, startRotation]);
   
+  // Determine which card is facing the camera (closest to front)
+  const activeIndex = ((Math.round(rotation / 120) % cards.length) + cards.length) % cards.length;
+  
   return (
     <div className="carousel-outer">
       <div className="carousel-wrapper">
@@ -218,11 +221,14 @@ function App() {
                   key={card.id}
                   className="carousel-card-wrapper"
                   style={{
-                    transform: `rotateY(${cardRotation}deg) translateZ(200px)`,
+                    transform: `rotateY(${cardRotation}deg) translateZ(15rem)`,
                     transformOrigin: 'center center'
                   }}
                 >
-                  <div className="carousel-card" style={{ backgroundColor: card.color }}>
+                  <div 
+                    className={`carousel-card ${index === activeIndex ? 'active' : 'inactive'}`}
+                    style={{ backgroundColor: card.color }}
+                  >
                     {/* Coming Soon Pill - Top Left */}
                     <div className="carousel-pill-container">
                       <div className="carousel-pill">
