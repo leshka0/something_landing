@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import ReactPlayer from 'react-player';
 import './App.css'
 
 function App() {
