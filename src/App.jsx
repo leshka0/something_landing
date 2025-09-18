@@ -265,8 +265,10 @@ function App() {
           <h1 className='header'>Your climate companion.</h1>        
         </div>
       <p className='medium'>
-        We're here to make climate action easier and more uplifting — starting with one of highest impact actions you can take: green banking.
+        We're here to make climate action easier and more uplifting — starting with one of highest impact actions you can take:
         </p>
+        <h2 className='header green'>Green Banking</h2>   
+        
 
         <video className='teaserVideo'
           src="videos/somethingTeaser.mp4"

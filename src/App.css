@@ -32,7 +32,11 @@ body {
   line-height: 1;
   margin: auto;
 }
-
+h2.green{
+  color: #BEF046;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
 .something {
   height: 3.45rem;
   padding: 0;
@@ -40,8 +44,8 @@ body {
 h1{margin: 0;}
 .intro {
   margin: auto;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 h2.mission{
   font-weight: 100;
@@ -121,7 +125,7 @@ p.small{
   margin: auto;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  width: 60%;
+  width: 70%;
   border-radius: 1.5rem;
 }
 @media (max-width: 768px) {
