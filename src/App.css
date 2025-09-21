@@ -38,6 +38,10 @@ h2.green{
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
+.green{
+
+  color: #BEF046;
+}
 .something {
   height: 3.45rem;
   padding: 0;
@@ -60,18 +64,21 @@ h2.mission{
 }
 @media (max-width: 768px) {p {font-size: 0.8rem;}}
 @media (max-width: 768px) {h2.mission {font-size: 1.8rem; line-height: 1.2;}}
-p.medium{
+.medium{
   font-family: 'AttilaSansBasic-Regular', sans-serif;
   font-size: 1.5rem;
   line-height: 1.5;
-  max-width: 40rem;
   padding: 0.5rem;
   margin: auto;
 }
-@media (max-width: 768px) {p.medium {font-size: 1.25rem;}}
+.contained{
+  max-width: 40rem;
+}
+@media (max-width: 768px) {.medium {font-size: 1.25rem;}}
 p.small{
   font-family: 'arial', sans-serif;
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: 0.75rem;
   line-height: 1.5;
   margin: auto;
   color: #999999;
@@ -550,15 +557,53 @@ p.small{
   .storeButton{
     box-shadow: inset 0 0 0 0rem black; /* acts like an inside stroke */
     background-color:#BEF046;
+    height: 4.0rem ;
+    padding: 1.5rem;
   }
   .email-form-inline.mobile-inline {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 0.5rem;
+    height: 4.0rem ;
   }
 
   .email-form-inline.mobile-inline .email-input-inline {
     width: auto;
     max-width: 220px;
   }
+}
+
+/* Policy Pages Styles */
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-family: 'AttilaSansBasic-Regular', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: white;
+  color: black;
+}
+
+.policy-content {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.25rem;
+}
+
+.policy-content ul {
+  margin: 1rem 0;
+  /* padding-left: 2rem; */
+}
+
+.policy-content li {
+  margin-bottom: 0.5rem;
 }
