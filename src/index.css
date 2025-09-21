@@ -8,23 +8,32 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 @font-face {
   font-family: 'AttilaSansBasic-Semibold';
-  src: url('AttilaSansBasic-Semibold.ttf') format('ttf');
-  font-style: semibold;
+  src: url('/fonts/AttilaSansBasic-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'AttilaSansBasic-Regular';
-  src: url('../public/fonts/AttilaSansBasic-Regular.ttf') format('ttf');
-  font-style: regular;
+  src: url('/fonts/AttilaSansBasic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'AttilaSansBasic-Medium';
-  src: url('AttilaSansBasic-Medium.ttf') format('ttf');
-  font-style: medium;
+  src: url('/fonts/AttilaSansBasic-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
