@@ -414,7 +414,7 @@ function Home() {
       </div>
 
       <p className='small'>
-      (Please note: For now participants must live inside the US)
+      (Please note: For now, participants must live inside the US)
       </p>
 
       <div className='footer'>

@@ -303,7 +303,7 @@ p.small{
   font-family: Arial, Helvetica, sans-serif
   ;
 }
-@media (max-width: 768px) {.footer{ padding: 0.5rem;}}
+@media (max-width: 768px) {.footer{ padding: 2rem 1rem;}}
 .copyrightContainer{
   margin: auto;
   max-width: 1280px;
@@ -315,7 +315,7 @@ p.small{
   width: 100%;
   text-align: left;
   color: white;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 .termsAndConditionsContainer{
   display: flex;
@@ -436,8 +436,11 @@ p.small{
   display:inline-flex;
   border-radius: 99rem;
   /* border: #666666 2px solid; */
-  background-color: black;
+  border: 0.1rem solid #666666;
+  background-color: rgba(0,0,0,0.7);
   padding: 0.3rem;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -448,12 +451,12 @@ p.small{
   height: 3.825rem ;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  border: 0.4rem solid black;
+  border: 0.4rem solid rgba(0,0,0,0);
   border-radius: 999px;
   font-family: 'AttilaSansBasic-Regular', sans-serif;
   font-size: 1rem;
   color: white;
-  background-color: black;
+  background-color: rgba(0,0,0,0);
   min-width: 250px;
   letter-spacing: 0.03rem;
   transition: all 0.6s cubic-bezier(0.3, 0, 0.2, 1);

@@ -123,6 +123,10 @@ function PrivacyPolicy() {
         </p>
       </div>
 
+      <div className="header-container">
+          <Link to="/" className="back-link">← Back to Home</Link>
+        </div>
+
       <div className="footer">
         <div className="copyrightContainer">
           <span>Copyright something™ {new Date().getFullYear()}</span>

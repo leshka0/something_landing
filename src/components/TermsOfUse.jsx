@@ -173,6 +173,10 @@ By joining our platform, you show that you want to be part of the solution to th
         </p>
       </div>
 
+      <div className="header-container">
+          <Link to="/" className="back-link">← Back to Home</Link>
+        </div>
+
       <div className="footer">
         <div className="copyrightContainer">
           <span>Copyright something™ {new Date().getFullYear()}</span>
