@@ -425,6 +425,7 @@ p.small{
   font-size: 1.5rem; /* ~text-2xl */
   font-weight: 700;
   color: black;
+  font-family: 'AttilaSansBasic-semibold', sans-serif;
   margin: 0;
 }
 
@@ -492,7 +493,6 @@ p.small{
 }
 
 .success-message {
-
   background-color: black;
   padding: 1rem;
   padding-left: 2rem;
@@ -501,7 +501,7 @@ p.small{
   display:inline;
   margin: auto;
   color: #1E963C;
-  font-family: 'AttilaSansBasic-Regular', sans-serif;
+  font-family: 'AttilaSansBasic-semibold', sans-serif;
   font-size: 0.83rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
@@ -521,7 +521,7 @@ p.small{
   display:inline;
   margin: auto;
   color: #FF6B6B;
-  font-family: 'AttilaSansBasic-Regular', sans-serif;
+  font-family: 'AttilaSansBasic-semibold', sans-serif;
   font-size: 0.83rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
@@ -555,6 +555,14 @@ p.small{
 }
 
 @media (max-width: 768px) {
+
+  .success-message {
+    font-size: 0.7rem;
+    padding: 0.75rem 1rem;
+  }
+  .error-message {
+    font-size: 0.6rem;
+  }
   .email-form-inline {
     flex-direction: column;
     gap: 1.5rem;
