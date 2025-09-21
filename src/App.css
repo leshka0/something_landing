@@ -32,6 +32,7 @@ body {
   line-height: 1;
   margin: auto;
 }
+@media (max-width: 768px) {.header {font-size: 1.7rem; line-height: 1.2;}}
 h2.green{
   color: #BEF046;
   margin-bottom: 3rem;
@@ -57,6 +58,8 @@ h2.mission{
   margin-top: 7.25rem;
   width: 90%;
 }
+@media (max-width: 768px) {p {font-size: 0.8rem;}}
+@media (max-width: 768px) {h2.mission {font-size: 1.8rem; line-height: 1.2;}}
 p.medium{
   font-family: 'AttilaSansBasic-Regular', sans-serif;
   font-size: 1.5rem;
@@ -65,6 +68,7 @@ p.medium{
   padding: 0.5rem;
   margin: auto;
 }
+@media (max-width: 768px) {p.medium {font-size: 1.25rem;}}
 p.small{
   font-family: 'arial', sans-serif;
   font-size: 1rem;
@@ -75,9 +79,10 @@ p.small{
 .logo {
   margin: auto;
   display: block;
-  height: 16rem;
+  height: 14rem;
   padding: 1.5em;
 }
+@media (max-width: 768px) {.logo {height: 8rem;}}
 .header-container{
   display: flex;
   flex-direction: row;
@@ -89,19 +94,13 @@ p.small{
   .weare {
     font-size: 2.45rem;
   }
-  .header {
-    font-family: 'AttilaSansBasic-Semibold', sans-serif;
-    font-size: 2.45rem;
-  }
   .something {
     height: 2.45rem;
     margin-top: -1rem;
+    margin-bottom: 1rem;
   }
   .header-container {
     flex-direction:column;
-  }
-  h2.mission{
-    font-size: 2.45rem;
   }
 }
 
@@ -189,6 +188,12 @@ p.small{
   align-items: flex-end;       /* vertical: bottom */
 }
 
+.goal p{
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+
 @media (max-width: 768px) {
   .goalsContainer {
     display: flex;
@@ -196,8 +201,13 @@ p.small{
     gap: 0.5rem;
   }
   .goal {
-    padding: 2rem;
-    padding-top: 8rem;
+    padding: 1.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .goal p{
+    font-size: 1.2rem;
+    line-height: 1.3;
   }
 }
 .courseContainer{
@@ -312,11 +322,12 @@ p.small{
 
 /* Carousel 2 */
 .carousel-outer{
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  margin-top: 5rem;
+  padding-top: 7rem;
 }
 .carousel-wrapper{
   position: relative;
@@ -333,6 +344,7 @@ p.small{
   cursor: grab;
 }
 .carousel.is-grabbing{ cursor: grabbing; }
+.carousel.mobile-no-interaction{ cursor: default; }
 .carousel-rotator{
   position: relative;
   width: 100%;
@@ -390,10 +402,6 @@ p.small{
 }
 
 /* Carousel card states */
-.carousel-card.active {
-  /* Active card keeps its original color from inline style */
-}
-
 .carousel-card.inactive {
   background-color: #2B2B2B !important;
 }
@@ -410,8 +418,8 @@ p.small{
   perspective: 1000px;
 }
   .carousel-card-wrapper{
-    width: 15rem; /* ~w-80 */
-    height: 20rem; /* ~h-80 */
+    width: 65vw; 
+    height: 86vw; 
   }
 }
 
@@ -438,6 +446,7 @@ p.small{
   font-family: 'AttilaSansBasic-Regular', sans-serif;
   font-size: 1rem;
   color: white;
+  background-color: black;
   min-width: 250px;
   letter-spacing: 0.03rem;
   transition: all 0.6s cubic-bezier(0.3, 0, 0.2, 1);

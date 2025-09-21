@@ -114,7 +114,7 @@ function App() {
   useEffect(() => {
     let interval = null;
     
-    // Only auto-rotate when not dragging
+    // Only auto-rotate when not dragging (works on both desktop and mobile)
     if (!isDragging) {
       interval = setInterval(() => {
         setRotation(prev => prev + 120);
@@ -127,13 +127,14 @@ function App() {
   }, [isDragging]);
 
   const handleMouseDown = (e) => {
+    if (isMobile) return; // Disable on mobile
     setIsDragging(true);
     setStartX(e.clientX);
     setStartRotation(rotation);
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
+    if (!isDragging || isMobile) return; // Disable on mobile
     
     const deltaX = e.clientX - startX;
     const rotationDelta = deltaX * 0.22; // Sensitivity factor
@@ -141,19 +142,21 @@ function App() {
   };
 
   const handleMouseUp = () => {
+    if (isMobile) return; // Disable on mobile
     setIsDragging(false);
     // Snap to nearest multiple of 120 degrees
     setRotation(prev => Math.round(prev / 120) * 120);
   };
 
   const handleTouchStart = (e) => {
+    if (isMobile) return; // Disable on mobile
     setIsDragging(true);
     setStartX(e.touches[0].clientX);
     setStartRotation(rotation);
   };
 
   const handleTouchMove = (e) => {
-    if (!isDragging) return;
+    if (!isDragging || isMobile) return; // Disable on mobile
     
     const deltaX = e.touches[0].clientX - startX;
     const rotationDelta = deltaX * 0.5; // Sensitivity factor
@@ -161,6 +164,7 @@ function App() {
   };
 
   const handleTouchEnd = () => {
+    if (isMobile) return; // Disable on mobile
     setIsDragging(false);
     // Snap to nearest multiple of 125 degrees
     setRotation(prev => Math.round(prev / 125) * 125);
@@ -197,7 +201,7 @@ function App() {
         {/* Carousel Container with 3D Perspective */}
         <div 
           ref={carouselRef}
-          className={`carousel ${isDragging ? 'is-grabbing' : 'is-grab'}`}
+          className={`carousel ${isDragging ? 'is-grabbing' : 'is-grab'} ${isMobile ? 'mobile-no-interaction' : ''}`}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
