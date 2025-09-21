@@ -13,6 +13,7 @@ function Home() {
   const [errorMessage, setErrorMessage] = useState('')
   const [isMobile, setIsMobile] = useState(false)
   const [mobileEmailMode, setMobileEmailMode] = useState(false)
+  const [isDownloadRevealed, setIsDownloadRevealed] = useState(false)
   const emailInputRef = useRef(null)
 
   // Email validation function
@@ -85,6 +86,36 @@ function Home() {
       emailInputRef.current.focus()
     }
   }, [mobileEmailMode])
+
+  // Download container reveal logic
+  useEffect(() => {
+    let scrollTimer = null
+    let revealTimer = null
+
+    const handleScroll = () => {
+      if (!isDownloadRevealed) {
+        setIsDownloadRevealed(true)
+        clearTimeout(revealTimer)
+      }
+    }
+
+    // Set up 4-second timer
+    revealTimer = setTimeout(() => {
+      if (!isDownloadRevealed) {
+        setIsDownloadRevealed(true)
+      }
+    }, 4000)
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(revealTimer)
+      clearTimeout(scrollTimer)
+    }
+  }, [isDownloadRevealed])
 
   //Carrousel
   const RotatingCarousel = () => {
@@ -267,12 +298,12 @@ function Home() {
           <img src={"images/logo/logo.svg"} className="something"  alt="Something logo" />
         </div>
         
-          <h1 className='header'>Your climate companion.</h1>        
+          <h1 className='weare'>Your climate companion.</h1>        
         </div>
       <p className='medium contained'>
         We're here to make climate action easier and more uplifting — starting with one of highest impact actions you can take:
         </p>
-        <h2 className='header green'>Green Banking</h2>   
+        <h2 className='header greenbanking green'>Green Banking</h2>   
         
 
         <video className='teaserVideo'
@@ -289,7 +320,7 @@ function Home() {
       <img src={"images/buttons/playstore_grey.svg"} className="storeIcon" alt="play store logo" />
       <img src={"images/buttons/apple_grey.svg"} className="storeIcon" alt="play store logo" />
     </div>
-    <p>Coming soon on Google Play and App Store</p>
+    <p>Coming soon<br/>on Google Play and App Store</p>
   </div>
 
         <div className='goalsContainer'>
@@ -331,13 +362,13 @@ function Home() {
 
 
 
-        <p className='medium contained'>
+        {/* <p className='medium contained'>
         We're here to make climate action easier and more uplifting — starting with one of the highest impact actions you can take: green banking.
-        </p>
+        </p> */}
 
         <img src={"images/logo/logo.svg"} className="somethingAnimation"  alt="Something logo" />
 
-        <div className='downloadContainer'>
+        <div className={`downloadContainer ${isDownloadRevealed ? 'revealed' : ''}`}>
           {/* Success/Error Messages */}
           {showSuccess && (
             <div className='messageContainer'>
@@ -414,7 +445,8 @@ function Home() {
       </div>
 
       <p className='small'>
-      (Please note: For now, participants must live inside the US)
+      (Please note: For now,
+       participants must live inside the US)
       </p>
 
       <div className='footer'>
