@@ -143,6 +143,40 @@ p.small{
   margin-top: 2rem;
   width: 70%;
   border-radius: 1.5rem;
+  transition: all 1s cubic-bezier(0.3, 0, 0.2, 1)
+}
+.teaserWrapper{
+  position: relative;
+}
+.teaserOverlayPlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0);
+  border: none;
+  cursor: pointer;
+}
+
+.playCircle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #BEF046;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 999px;
+}
+.playCircle img{
+  display: block;
+  margin: auto;
+}
+
+.teaserOverlayPlay:focus{ outline: none; }
+.fullscreen{
+  width: 80vw;
+  max-height: 100vh;
 }
 @media (max-width: 768px) {
   .teaserVideo{

@@ -4,6 +4,9 @@ import '../App.css'
 
 function Home() {
   const [count, setCount] = useState(0)
+  const [hasStartedTeaser, setHasStartedTeaser] = useState(false)
+  const [isTeaserPlaying, setIsTeaserPlaying] = useState(false)
+  const teaserVideoRef = useRef(null)
   
   // Email subscription state
   const [email, setEmail] = useState('')
@@ -87,35 +90,81 @@ function Home() {
     }
   }, [mobileEmailMode])
 
-  // Download container reveal logic
+  // Download container reveal logic (disabled while teaser is playing)
   useEffect(() => {
-    let scrollTimer = null
     let revealTimer = null
+
+    if (isTeaserPlaying) {
+      setIsDownloadRevealed(false)
+      return () => {
+        if (revealTimer) clearTimeout(revealTimer)
+      }
+    }
 
     const handleScroll = () => {
       if (!isDownloadRevealed) {
         setIsDownloadRevealed(true)
-        clearTimeout(revealTimer)
+        if (revealTimer) clearTimeout(revealTimer)
       }
     }
 
-    // Set up 4-second timer
     revealTimer = setTimeout(() => {
       if (!isDownloadRevealed) {
         setIsDownloadRevealed(true)
       }
     }, 4000)
 
-    // Add scroll listener
     window.addEventListener('scroll', handleScroll, { passive: true })
 
-    // Cleanup
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      clearTimeout(revealTimer)
-      clearTimeout(scrollTimer)
+      if (revealTimer) clearTimeout(revealTimer)
     }
-  }, [isDownloadRevealed])
+  }, [isDownloadRevealed, isTeaserPlaying])
+
+  // Sync playing state with native video events
+  useEffect(() => {
+    const video = teaserVideoRef.current
+    if (!video) return
+
+    const onPlay = () => setIsTeaserPlaying(true)
+    const onPause = () => setIsTeaserPlaying(false)
+    const onEnded = () => setIsTeaserPlaying(false)
+
+    video.addEventListener('play', onPlay)
+    video.addEventListener('pause', onPause)
+    video.addEventListener('ended', onEnded)
+
+    return () => {
+      video.removeEventListener('play', onPlay)
+      video.removeEventListener('pause', onPause)
+      video.removeEventListener('ended', onEnded)
+    }
+  }, [])
+
+  // Pause and reset teaser when less than 70% visible (i.e., 30% out of view)
+  useEffect(() => {
+    const video = teaserVideoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (!entry) return
+        const ratio = entry.intersectionRatio
+        if (ratio < 0.7 && (isTeaserPlaying || hasStartedTeaser)) {
+          try { video.pause() } catch (e) {}
+          setHasStartedTeaser(false)
+          setIsTeaserPlaying(false)
+          setIsDownloadRevealed(true)
+        }
+      },
+      { threshold: [0, 0.7, 1] }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [isTeaserPlaying, hasStartedTeaser])
 
   //Carrousel
   const RotatingCarousel = () => {
@@ -304,14 +353,47 @@ function Home() {
         We're here to make climate action easier and more uplifting — starting with one of highest impact actions you can take:
         </p>
         <h2 className='header greenbanking green'>Green Banking</h2>   
+
+        </div>
         
+        <div className='teaserWrapper'>
+          <video
+            ref={teaserVideoRef}
+            className={`teaserVideo ${hasStartedTeaser ? 'fullscreen' : ''}`}
+            src="videos/somethingTeaser.mp4"
+            controls={hasStartedTeaser}
+          ></video>
 
-        <video className='teaserVideo'
-          src="videos/somethingTeaser.mp4"
-          autoPlay
-          controls
-        ></video>
+          {!hasStartedTeaser && (
+            <button
+              className='teaserOverlayPlay'
+              aria-label='Play teaser video'
+              onClick={() => {
+                setHasStartedTeaser(true)
+                setIsTeaserPlaying(true)
+                setIsDownloadRevealed(false)
+                // Start playback after enabling controls
+                if (teaserVideoRef.current) {
+                  const v = teaserVideoRef.current
+                  // Some browsers require calling play() in a user gesture
+                  v.play && v.play()
+                }
+              }}
+            >
+              {/* Simple Play Icon */}
+              {/* <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" fill="#BEF046" opacity="1"/>
+              </svg> */}
+              <div className='playCircle'>
+              <img src={"images/buttons/play.svg"} className="playicon" alt="play" />
+              </div>
+            </button>
+          )}
+        </div>
 
+
+        <div className='mainContainer'>
+          
         <h2 className='mission'>With <span className='highlightText'>$41Tn already divested from fossil fuels</span>, why not join the movement and switch to a green bank?</h2>
 
       
