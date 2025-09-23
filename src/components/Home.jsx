@@ -380,12 +380,8 @@ function Home() {
                 }
               }}
             >
-              {/* Simple Play Icon */}
-              {/* <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="11" fill="#BEF046" opacity="1"/>
-              </svg> */}
               <div className='playCircle'>
-              <img src={"images/buttons/play.svg"} className="playicon" alt="play" />
+              <img height={16} src={"images/buttons/play.svg"} className="playicon" alt="play" />
               </div>
             </button>
           )}

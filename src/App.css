@@ -158,15 +158,19 @@ p.small{
   border: none;
   cursor: pointer;
 }
-
 .playCircle{
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #BEF046;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 999px;
+  transition: all 0.4s cubic-bezier(0.3, 0, 0.2, 1)
+}
+ .playCircle:hover{
   width: 7.5rem;
   height: 7.5rem;
-  border-radius: 999px;
 }
 .playCircle img{
   display: block;
