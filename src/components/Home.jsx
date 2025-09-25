@@ -142,10 +142,11 @@ function Home() {
     }
   }, [])
 
-  // Pause and reset teaser when less than 70% visible (i.e., 30% out of view)
+  // Pause and reset teaser when less than 70% visible (disabled on mobile)
   useEffect(() => {
     const video = teaserVideoRef.current
     if (!video) return
+    if (isMobile) return
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -164,7 +165,7 @@ function Home() {
 
     observer.observe(video)
     return () => observer.disconnect()
-  }, [isTeaserPlaying, hasStartedTeaser])
+  }, [isTeaserPlaying, hasStartedTeaser, isMobile])
 
   //Carrousel
   const RotatingCarousel = () => {
